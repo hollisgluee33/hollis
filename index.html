@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Benji — The Matcha-Loving Maltese Legend</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  html, body {
+    height: 100%;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* Container - center content */
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem 1rem 5rem;
+    text-align: center;
+  }
+
+  /* Main Heading */
+  h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.2em;
+    color: #fff;
+    position: relative;
+    animation: glowPulse 3s infinite ease-in-out alternate;
+  }
+
+  /* Subheading with underline animation */
+  h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    position: relative;
+  }
+  h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #fff;
+    margin: 8px auto 0;
+    border-radius: 2px;
+    animation: underlineGrow 1.8s ease forwards;
+  }
+
+  /* Animated glowing text for subtopics */
+  .glow-text {
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #0f0,
+      0 0 30px #0f0,
+      0 0 40px #0f0,
+      0 0 55px #0f0,
+      0 0 75px #0f0;
+    animation: neonGlow 4s ease-in-out infinite alternate;
+  }
+
+  /* Paragraph styling */
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0.8rem auto 2rem;
+    color: #eee;
+    text-shadow: 0 0 4px rgba(255,255,255,0.3);
+  }
+
+  /* Images styling */
+  img {
+    max-width: 250px;
+    margin: 1rem 1rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 0 30px 5px #fff inset;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 3px solid white;
+  }
+  img:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow:
+      0 0 20px 5px #0f0,
+      0 0 40px 10px #0f0;
+  }
+
+  /* Image gallery */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Info cards with pulse */
+  .info-card {
+    background: #111;
+    padding: 1.8rem 2rem;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 2rem auto;
+    box-shadow:
+      0 0 10px 2px #fff,
+      0 0 30px 10px #0f0 inset;
+    animation: pulseGlow 5s ease-in-out infinite alternate;
+    color: #ddd;
+  }
+
+  /* Italic emphasis */
+  em {
+    font-style: italic;
+    color: #8f8;
+  }
+
+  /* Highlight for italics and special */
+  .highlight {
+    color: #0f0;
+    font-weight: 700;
+    text-shadow: 0 0 6px #0f0;
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    animation-name: fadeUp;
+    animation-duration: 1.2s;
+  }
+
+  /* Animations */
+  @keyframes glowPulse {
+    0% { text-shadow: 0 0 10px #fff, 0 0 20px #0f0, 0 0 30px #0f0;}
+    100% { text-shadow: 0 0 30px #0f0, 0 0 60px #0f0, 0 0 90px #0f0;}
+  }
+  @keyframes neonGlow {
+    0%, 100% {
+      text-shadow:
+        0 0 10px #0f0,
+        0 0 20px #0f0,
+        0 0 30px #0f0,
+        0 0 40px #0f0;
+    }
+    50% {
+      text-shadow:
+        0 0 25px #0f0,
+        0 0 40px #0f0,
+        0 0 60px #0f0,
+        0 0 80px #0f0;
+    }
+  }
+  @keyframes underlineGrow {
+    0% { width: 0; }
+    100% { width: 60px; }
+  }
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow:
+        0 0 10px 2px #fff,
+        0 0 30px 10px #0f0 inset;
+    }
+    50% {
+      box-shadow:
+        0 0 20px 5px #0f0,
+        0 0 50px 25px #0f0 inset;
+    }
+  }
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Matcha wave background animation */
+  .matcha-wave {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #a1d99b 30%, #4d7c22 70%);
+    opacity: 0.15;
+    z-index: -1;
+    animation: waveMove 20s linear infinite;
+    filter: blur(40px);
+  }
+  @keyframes waveMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+  }
+
+  /* Responsive */
+  @media(max-width: 650px) {
+    h1 { font-size: 3rem; }
+    .gallery img {
+      max-width: 150px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Matcha wave background -->
+<div class="matcha-wave" aria-hidden="true"></div>
+
+<div class="container" role="main" aria-label="Benji website">
+
+  <h1 class="glow-text" aria-live="polite">BENJI</h1>
+  <h2>Matcha, Music & Maltese Magic</h2>
+
+  <p class="reveal" style="animation-delay: 0.2s;">
+    Meet <span class="highlight">Benji</span>, a white Maltese dog with a <em>passion for matcha</em>, an obsession for <span class="highlight">2 Hollis</span>, and an Italian heritage that fuels his soul.
+  </p>
+
+  <p class="reveal" style="animation-delay: 0.5s;">
+    Born in Italy, Benji brings old-world charm and fierce style to the modern world — always dressed like a Balenciaga runway star, yet forever humble with his <strong>boyfriend Logi</strong> by his side.
+  </p>
+
+  <div class="gallery reveal" style="animation-delay: 0.8s;" aria-label="Gallery of Benji, matcha, 2 Hollis and Led Zeppelin">
+    <!-- White Maltese -->
+    <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=600&q=80" alt="Benji, the white Maltese dog, looking stylish and elegant" loading="lazy" />
+
+    <!-- Matcha -->
+    <img src="https://images.unsplash.com/photo-1543352634-2a0f89d522c2?auto=format&fit=crop&w=600&q=80" alt="A delicious cup of matcha tea with frothy surface" loading="lazy" />
+
+    <!-- 2 Hollis (abstract representation) -->
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Artistic urban silhouette representing 2 Hollis vibes" loading="lazy" />
+
+    <!-- Led Zeppelin album cover (Physical Graffiti) -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Led_Zeppelin_-_Physical_Graffiti.jpg" alt="Led Zeppelin Physical Graffiti album cover" loading="lazy" />
+  </div>
+
+  <div class="info-card reveal" style="animation-delay: 1.1s;" aria-label="About Benji’s music taste">
+    <h3>Benji’s Music Taste</h3>
+    <p>
+      Benji lives for the deep vibes of <span class="highlight">2 Hollis</span> and <span class="highlight">Sombur</span>, mixing soulful beats with Italian passion.
+      He appreciates classics like <em>George Harrison</em>, but also knows how to shade when needed.
+    </p>
+    <p>
+      For instance, Benji thinks <strong>Billy Idol mogs</strong> — pure rockstar energy. But when it comes to <em>Niamh's Led Zeppelin obsession?</em> Let’s just say Benji calls it <span style="text-decoration: line-through; color:#f33;">terrible</span> with an eye roll.
+    </p>
+  </div>
+
+  <div class="info-card reveal" style="animation-delay: 1.4s;" aria-label="About Benji’s lifestyle">
+    <h3>Matcha Obsession & Lifestyle</h3>
+    <p>
+      Benji’s mornings always start with a steaming cup of matcha — carefully brewed, frothy, and perfect. This ritual fuels his day filled with fashion, music, and <em>lots</em> of chicken.
+    </p>
+    <p>
+      Between chill moments with his boyfriend Logi and absorbing Balenciaga aesthetics, Benji balances old Italian tradition with new-age cool.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 Benji’s World — Crafted with matcha love & beats.
+</footer>
+
+<script>
+  // Scroll reveal animation trigger
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    for (const element of reveals) {
+      const windowHeight = window.innerHeight;
+      const revealTop = element.getBoundingClientRect().top;
+      const revealPoint = 150;
+
+      if (revealTop < windowHeight - revealPoint) {
+        element.classList.add('active');
+      } else {
+        element.classList.remove('active');
+      }
+    }
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
